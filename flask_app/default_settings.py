@@ -1,0 +1,3 @@
+TESTING = False
+TEMPLATE_FOLDER = 'templates'
+MAIL_ENABLED = False
