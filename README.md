@@ -5,6 +5,13 @@
 https://developers.google.com/identity/gsi/web
 https://developers.google.com/identity/gsi/web/guides/overview
 
+## flask_oauthlib
+
+Read:
+ * https://docs.authlib.org/en/latest/flask/2/
+ * https://flask-oauthlib.readthedocs.io/en/latest/oauth2.html
+
+
 ## Debugging
 
 
@@ -15,7 +22,7 @@ top level of the repo, activate, then add dependencies from requirements.txt:
 cd ~/git/ex_oauth_flask
 python3 -m venv venv
 . venv/bin/activate
-pip3 install Flask Authlib requests
+pip3 install Flask Authlib requests pyjwt
 ```
 
 then start the flask application

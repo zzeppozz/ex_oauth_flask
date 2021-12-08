@@ -1,21 +1,25 @@
 from authlib.integrations.flask_client import OAuth
-from flask import Flask, render_template, url_for, redirect
-import os
+from flask import Flask, redirect, render_template, session, url_for
+# from flask_oauthlib.provider import OAuth2Provider
 
 # ..........................
-def load_app():
+def load_app():    
     app = Flask(__name__, template_folder='templates', instance_relative_config=True)
+    
+    # oauth.init_app(app)
     
     app.config['SERVER_NAME'] = 'localhost:5000'
     # Preload config settings from module
     app.config.from_object('flask_app.default_settings')
     # Override default settings with file in instance folder
     app.config.from_object('flask_app.instance.local_settings')
-    
-    oauth = OAuth(app)
-    return app, oauth
+    return app
 
-app, oauth = load_app()
+# ..........................
+app = load_app()
+oauth = OAuth()
+oauth.init_app(app)
+
 
 # ..........................
 @app.route('/')
@@ -49,6 +53,8 @@ def google():
 def google_auth():
     token = oauth.google.authorize_access_token()
     user = oauth.google.parse_id_token(token)
+    session['user'] = user
+    # session['user_id'] = user.
     print(" Google User ", user)
     return redirect('/')
 
