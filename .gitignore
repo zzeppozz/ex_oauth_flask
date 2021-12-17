@@ -1,0 +1,8 @@
+/venv/
+/flask_app/__pycache__/
+/flask_app/instance/
+
+.project
+.pydevproject
+
+
